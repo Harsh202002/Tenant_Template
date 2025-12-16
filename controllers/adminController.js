@@ -283,6 +283,15 @@ export const updateHR = asyncHandler(async (req, res, next) => {
   }
 });
 
-// Additional admin controller functions can be added here      
+
+export const getHrCreatedByRmg = asyncHandler(async (req, res, next) => {
+  try {
+    const rmgId = req.user._id;
+    const hrUsers = await User.find({ role: 'HR', createdBy: rmgId }).select('-password');
+    res.status(200).json({ success: true, count: hrUsers.length, data: hrUsers });
+  } catch (err) {
+    return next(new ErrorResponse(err.message || 'Failed to fetch HR users', 500));
+  }
+});  
 
 
