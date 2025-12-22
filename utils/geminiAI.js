@@ -181,7 +181,7 @@ function sanitizeJSON(str) {
 
 
 export async function extractResumeText(resumeUrl) {
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   const fileBuffer = await downloadFile(resumeUrl);
 
@@ -214,7 +214,7 @@ Return JSON:
 
 
 export async function evaluateResume(jd, candidate, extractedText) {
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   const prompt = `
 You are a strict senior technical recruiter.
